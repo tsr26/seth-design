@@ -1,0 +1,76 @@
+{% extends "seth_design/base.html" %}
+{% load tethys_gizmos %}
+
+{% block header_buttons %}
+  <div class="header-button glyphicon-button" data-toggle="tooltip" data-placement="bottom" title="Help">
+    <a data-toggle="modal" data-target="#help-modal"><span class="glyphicon glyphicon-question-sign"></span></a>
+  </div>
+{% endblock %}
+
+{% block app_content %}
+  <h1>Project Proposal</h1>
+  <h4>Introduction</h4>
+  <p>An issue that faces most construction projects involves dealing with groundwater seepage into the construction site
+  Should a site require excavation below the water table elevation in a particular are, gound water will start to seep through
+  the surrounding soil on site in a n attempt to fill the vacant area created. Therefore, in order to continue carrying out the project
+  and avoid creating a more hazardous working environment the ground water must be removed constantly to avoid delays, injury, or irreparable
+  damage to the project.</p>
+  <h4>Vector and Raster Data Required</h4>
+  <p>Vector data that will be needed for this web app include land parcels, soil types, lakes, rivers
+  streams, and springs, protected drinking water zones, water rights regions,
+  watersheds, flood areas, ect. The raster data that will be required for this app include groundwater
+  data, and digital elevation models.</p>
+  <h4>Data Distributed Via Map Services</h4>
+  <p>This tethys app will provide land developers important information such as slope stability and the flowrate
+  of effluent water, so they can know the correct size of the pump needed to keep their site dry.</p>
+  <h4>General Geoprocessing Workflow</h4>
+  <p>The workflow will begin by locating the site that is being developed. It will then use groundwater modeling tools to calculate piezometric pressure
+  and then calculate the flow rate based on these pressures. For slope stability, the type of soil depth of excavation will be taken into account. These
+  results will then be reclassified into set categories given by the city, showing the correct way to contain the water.</p>
+  <h4>Basic Front-End USer Interface Functions</h4>
+  <p>The user will start wiht the base map. They will be instructed to delineate the area of interest by drawing a polygon. The developer
+  will be prompted to enter details about their construction project, such as dimensions of the excavation. After the analysis is run, it will provide a pop-up
+  box that displays the necessary information.</p>
+  <h4>General Team Member Responsibilities</h4>
+  <p>Kyler Ashby - Team Leader. Kyler will work to ensure that team responsibilities are distributed fairly. If possible the project
+  will be divided according to team member strengths to maximize the benefits of working in a group.</p>
+  <p>Seth Richardson - Presentation Specialist. Seth will work on making sure that the final product is not just
+  functional, but visually appealing as well. Seth will also lead out on the PowerPoint for any presentations given by the group.</p>
+  <p>Brandon Roberts - Coding Guru. Brandon will take the lead with any bugs and difficult sections of code related to our
+  project. He will ensure that the final code is both functional and easily understandable.</p>
+  <h4>Conclusion</h4>
+  <p>We hope that our project will bea ble to be a valuable estimation tool for builders hoping to get an idea of the requirements of their projects,
+  thereby increasing efficiency which should help in reducing costs and impact on the local surroundings.</p>
+{% endblock %}
+
+{# Use the after_app_content block for modals #}
+{% block after_app_content %}
+  <!-- Example Modal -->
+  <div class="modal fade" id="help-modal" tabindex="-1" role="dialog" aria-labelledby="help-modal-label">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h5 class="modal-title" id="help-modal-label">Example Modal</h5>
+        </div>
+        <div class="modal-body">
+          <p>You can add custom buttons to the app header using the <code>header_buttons</code> block. Use anchor/link tags for the button and wrap it in a div with the class <code>header-button</code>. For buttons with the gliphyicons, add the <code>glyphicon-button</code> class as well.</p>
+          <p>Ever have trouble using a modal in a Tethys app? Use the <code>after_app_content</code> block for modal content to allow them to function properly. See: <a href="https://getbootstrap.com/javascript/#modals">Bootstrap Modals</a></p>
+          <p>Add tooltips to any element by adding the <code>data-toggle</code>, <code>data-placement</code>, and <code>title</code> attributes to the button. See: <a href="https://getbootstrap.com/javascript/#tooltips">Bootstrap Tooltips</a></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block app_actions %}
+  {% gizmo save_button %}
+  {% gizmo edit_button %}
+  {% gizmo remove_button %}
+  {% gizmo previous_button %}
+  {% gizmo next_button %}
+{% endblock %}
